@@ -90,6 +90,20 @@ const registerHook = ({ init, filter, action }, hookCtx) => {
       await ticketAssetService.createMany(tmp);
     }
   });
+
+  // when  a ticket asset is created, increment it by 1
+  action("ticket_asset.items.create", async (input, ctx) => {
+    console.log(input);
+    console.log(Object.keys(ctx));
+    const ticket_id = input.payload.event_ticket;
+    // increment it by 1
+    ctx
+      .database("event_ticket")
+      .where("id", ticket_id)
+      .increment("_qty", 1)
+      .then(() => console.log("Qty incremented"))
+      .catch((e) => console.log(e));
+  });
 };
 
 export default registerHook;
