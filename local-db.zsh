@@ -1,6 +1,6 @@
 CONTAINER_NAME="dev-postgres"
 DB_USERNAME="postgres"
-DB_NAME="hostel_dev"
+DB_NAME="event_app"
 
 # Get the current date and time in a format like "YYYYMMDDHHMMSS"
 # TIMESTAMP=$(date +\%Y\%m\%d\%H\%M\%S)
